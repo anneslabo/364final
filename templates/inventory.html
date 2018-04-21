@@ -1,0 +1,28 @@
+﻿{% extends 'index.html' %}
+{% block main_content %}
+<table style="width:100%">
+    {% for r in inventory_records %}
+    <tr>
+        <th>{{ r[0] }}</th>
+        <th>{{ r[1] }}</th>
+    </tr>
+    {% endfor %}
+</table>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.file.label }} {{ form.file }}
+    <input type="submit" name="submit" value="Submit File" /><br />
+    ---------------------------------------<br />
+    {{ other_form.ingredient.label }} {{ other_form.ingredient() }}<br />
+    {{ other_form.quantity.label }} {{ other_form.quantity() }}<br />
+    <input type="submit" name="submit" value="Get or Create" /><br />
+    <input type="submit" name="submit" value="Delete" />
+</form>
+<form method="GET" action="{{url_for('grocery_list')}}">
+    <h2>Go to Grocery List</h2><br />
+    <input type="submit" />
+</form>
+{% endblock %}
+{% block navigation %}
+{{ super() }}
+{% endblock %}

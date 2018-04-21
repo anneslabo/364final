@@ -1,0 +1,21 @@
+﻿<h1>Select an Order</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+{{ super() }}
+{% endblock %}
+{% block main_content %}
+<table style="width:100%">
+    {% for order in orders %}
+    <tr>
+        <th>{{ order.date }}</th>
+        <th>{{ order.bread_type }}</th>
+        <th>{{ order.quantity }}</th>
+    </tr>
+    {% endfor %}
+</table>
+<form method="POST" action="{{url_for('orders')}}">
+    {{ form.orders() }}
+    <input type="submit" name="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+﻿{% extends 'index.html' %}
+{% block navigation %}
+{{ super() }}
+{% endblock %}
+{% block main_content %}
+
+<form method="POST" action="{{url_for('order')}}">
+    {{ form.organization.label }} {{ form.organization() }}<br />
+    {% for b in form.breads %}
+        {{ b.bread_type() }}  {{ b.quantity() }}<br />
+    {% endfor %}    
+    <input type="submit">
+</form>
+
+{% endblock %}

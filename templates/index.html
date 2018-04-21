@@ -1,0 +1,36 @@
+﻿{% if current_user.is_authenticated %}
+<a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+<a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+<br>
+{% block navigation %}
+<ul>
+    <i>
+        <li><a href="{{ url_for('login') }}">login</a>
+        <li><a href="{{ url_for('logout') }}">logout</a>
+        <li><a href="{{ url_for('index') }}">home</a>
+        <li><a href="{{ url_for('grocery_list') }}">View grocery list</a></li>
+        <li><a href="{{ url_for('inventory') }}">View inventory</a></li>
+        <li><a href="{{ url_for('order') }}">Place new order</a></li>
+        <li><a href="{{ url_for('orders') }}">View orders</a></li>
+        <li><a href="{{ url_for('flavors') }}">Get/create flavor</a></li>
+    </i>
+</ul>
+
+<p>--------</p><br>
+{% endblock %}
+
+{% block main_content %}
+<div>
+    {{ plan }}
+    <h2>Types of bread: </h2><br />
+    {% for bread in breads %}
+        {{ bread.bread_type }}<br />
+    {% endfor %}
+    {% for message in get_flashed_messages() %}
+    {{ message }}
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+﻿<h1>Grocery List</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+{{ super() }}
+{% endblock %}
+{% block main_content %}
+<table style="width:100%">
+{% for elt in needed %}
+<tr>
+    <th>{{ elt[0] }}</th>
+    <th>{{ elt[1] }}</th>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

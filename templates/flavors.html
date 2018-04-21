@@ -1,0 +1,13 @@
+﻿<h1>Select an Order</h1>
+{% extends 'index.html' %}
+
+{% block navigation %}
+{{ super() }}
+{% endblock %}
+{% block main_content %}
+{{ flavor }}<br />
+<form method="POST">
+    <input type="text" name="new"/>
+    <input type="submit" />
+</form>
+{% endblock %}
